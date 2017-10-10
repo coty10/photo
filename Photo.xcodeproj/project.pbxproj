@@ -15,6 +15,17 @@
 		E1CF812E1F8C2C81002FB9AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1CF812C1F8C2C81002FB9AE /* LaunchScreen.storyboard */; };
 		E1CF81391F8C2C81002FB9AE /* PhotoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CF81381F8C2C81002FB9AE /* PhotoTests.swift */; };
 		E1CF81441F8C2C81002FB9AE /* PhotoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CF81431F8C2C81002FB9AE /* PhotoUITests.swift */; };
+		E1CF81551F8C2CF1002FB9AE /* UIImage+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CF81541F8C2CF1002FB9AE /* UIImage+Additions.swift */; };
+		E1CF81571F8C2D03002FB9AE /* FAImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CF81561F8C2D03002FB9AE /* FAImageLoader.swift */; };
+		E1CF81591F8C2D24002FB9AE /* FAScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CF81581F8C2D24002FB9AE /* FAScrollView.swift */; };
+		E1CF815B1F8C2D4F002FB9AE /* FAGridView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1CF815A1F8C2D4F002FB9AE /* FAGridView.xib */; };
+		E1CF815E1F8C2D9F002FB9AE /* PhotoLibraryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CF815D1F8C2D9F002FB9AE /* PhotoLibraryCell.swift */; };
+		E1CF81601F8C2DAF002FB9AE /* AlbumListCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CF815F1F8C2DAF002FB9AE /* AlbumListCells.swift */; };
+		E1CF81631F8C2DF7002FB9AE /* AddPhotoPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CF81621F8C2DF7002FB9AE /* AddPhotoPostVC.swift */; };
+		E1CF81651F8C2E0E002FB9AE /* SelectAlbumFromLibraryTC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CF81641F8C2E0E002FB9AE /* SelectAlbumFromLibraryTC.swift */; };
+		E1CF81681F8C303C002FB9AE /* PHAssetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CF81671F8C303C002FB9AE /* PHAssetExtension.swift */; };
+		E1CF816A1F8C3052002FB9AE /* RequestPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CF81691F8C3052002FB9AE /* RequestPermission.swift */; };
+		E1CF816C1F8C323B002FB9AE /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CF816B1F8C323B002FB9AE /* MainVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +60,17 @@
 		E1CF813F1F8C2C81002FB9AE /* PhotoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1CF81431F8C2C81002FB9AE /* PhotoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUITests.swift; sourceTree = "<group>"; };
 		E1CF81451F8C2C81002FB9AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1CF81541F8C2CF1002FB9AE /* UIImage+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Additions.swift"; sourceTree = "<group>"; };
+		E1CF81561F8C2D03002FB9AE /* FAImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAImageLoader.swift; sourceTree = "<group>"; };
+		E1CF81581F8C2D24002FB9AE /* FAScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAScrollView.swift; sourceTree = "<group>"; };
+		E1CF815A1F8C2D4F002FB9AE /* FAGridView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FAGridView.xib; sourceTree = "<group>"; };
+		E1CF815D1F8C2D9F002FB9AE /* PhotoLibraryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryCell.swift; sourceTree = "<group>"; };
+		E1CF815F1F8C2DAF002FB9AE /* AlbumListCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumListCells.swift; sourceTree = "<group>"; };
+		E1CF81621F8C2DF7002FB9AE /* AddPhotoPostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoPostVC.swift; sourceTree = "<group>"; };
+		E1CF81641F8C2E0E002FB9AE /* SelectAlbumFromLibraryTC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAlbumFromLibraryTC.swift; sourceTree = "<group>"; };
+		E1CF81671F8C303C002FB9AE /* PHAssetExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHAssetExtension.swift; sourceTree = "<group>"; };
+		E1CF81691F8C3052002FB9AE /* RequestPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPermission.swift; sourceTree = "<group>"; };
+		E1CF816B1F8C323B002FB9AE /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +121,10 @@
 		E1CF811F1F8C2C81002FB9AE /* Photo */ = {
 			isa = PBXGroup;
 			children = (
+				E1CF81661F8C3034002FB9AE /* Helper */,
+				E1CF815C1F8C2D7D002FB9AE /* View */,
+				E1CF81611F8C2DC9002FB9AE /* Controller */,
+				E1CF81511F8C2CA8002FB9AE /* Services */,
 				E1CF81201F8C2C81002FB9AE /* AppDelegate.swift */,
 				E1CF81221F8C2C81002FB9AE /* ViewController.swift */,
 				E1CF81241F8C2C81002FB9AE /* Main.storyboard */,
@@ -126,6 +152,61 @@
 				E1CF81451F8C2C81002FB9AE /* Info.plist */,
 			);
 			path = PhotoUITests;
+			sourceTree = "<group>";
+		};
+		E1CF81511F8C2CA8002FB9AE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E1CF81531F8C2CCF002FB9AE /* Extension */,
+				E1CF81521F8C2CB6002FB9AE /* ImageCrop */,
+				E1CF81691F8C3052002FB9AE /* RequestPermission.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E1CF81521F8C2CB6002FB9AE /* ImageCrop */ = {
+			isa = PBXGroup;
+			children = (
+				E1CF81561F8C2D03002FB9AE /* FAImageLoader.swift */,
+				E1CF81581F8C2D24002FB9AE /* FAScrollView.swift */,
+				E1CF815A1F8C2D4F002FB9AE /* FAGridView.xib */,
+			);
+			path = ImageCrop;
+			sourceTree = "<group>";
+		};
+		E1CF81531F8C2CCF002FB9AE /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E1CF81541F8C2CF1002FB9AE /* UIImage+Additions.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		E1CF815C1F8C2D7D002FB9AE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E1CF815D1F8C2D9F002FB9AE /* PhotoLibraryCell.swift */,
+				E1CF815F1F8C2DAF002FB9AE /* AlbumListCells.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E1CF81611F8C2DC9002FB9AE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E1CF81621F8C2DF7002FB9AE /* AddPhotoPostVC.swift */,
+				E1CF81641F8C2E0E002FB9AE /* SelectAlbumFromLibraryTC.swift */,
+				E1CF816B1F8C323B002FB9AE /* MainVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E1CF81661F8C3034002FB9AE /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				E1CF81671F8C303C002FB9AE /* PHAssetExtension.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,6 +319,7 @@
 				E1CF812E1F8C2C81002FB9AE /* LaunchScreen.storyboard in Resources */,
 				E1CF812B1F8C2C81002FB9AE /* Assets.xcassets in Resources */,
 				E1CF81261F8C2C81002FB9AE /* Main.storyboard in Resources */,
+				E1CF815B1F8C2D4F002FB9AE /* FAGridView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,9 +344,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1CF816A1F8C3052002FB9AE /* RequestPermission.swift in Sources */,
+				E1CF815E1F8C2D9F002FB9AE /* PhotoLibraryCell.swift in Sources */,
+				E1CF81591F8C2D24002FB9AE /* FAScrollView.swift in Sources */,
+				E1CF81651F8C2E0E002FB9AE /* SelectAlbumFromLibraryTC.swift in Sources */,
+				E1CF81571F8C2D03002FB9AE /* FAImageLoader.swift in Sources */,
 				E1CF81291F8C2C81002FB9AE /* Photo.xcdatamodeld in Sources */,
+				E1CF81631F8C2DF7002FB9AE /* AddPhotoPostVC.swift in Sources */,
+				E1CF81551F8C2CF1002FB9AE /* UIImage+Additions.swift in Sources */,
 				E1CF81231F8C2C81002FB9AE /* ViewController.swift in Sources */,
 				E1CF81211F8C2C81002FB9AE /* AppDelegate.swift in Sources */,
+				E1CF81681F8C303C002FB9AE /* PHAssetExtension.swift in Sources */,
+				E1CF81601F8C2DAF002FB9AE /* AlbumListCells.swift in Sources */,
+				E1CF816C1F8C323B002FB9AE /* MainVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,7 +526,7 @@
 				DEVELOPMENT_TEAM = KQ9R8G678H;
 				INFOPLIST_FILE = Photo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Photo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cotyapps.Photo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -449,7 +541,7 @@
 				DEVELOPMENT_TEAM = KQ9R8G678H;
 				INFOPLIST_FILE = Photo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Photo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cotyapps.Photo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
