@@ -16,7 +16,7 @@ class SelectAlbumFromLibraryTC: UITableViewController {
     var headTitle: String!
     
     // MARK: Types for managing sections, cell and segue identifiers
-    enum Section: Int {
+     enum Section: Int {
         case allPhotos = 0
         case smartAlbums
         case userCollections
@@ -73,37 +73,39 @@ class SelectAlbumFromLibraryTC: UITableViewController {
     }
     
     // MARK: Segues
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destination = segue.destination as? AddPhotoPostVC
-            else { fatalError("unexpected view controller for segue") }
-        guard let cell = sender as? AlbumListCells else { fatalError("unexpected cell for segue") }
-        
-        switch SegueIdentifier(rawValue: segue.identifier!)! {
-        case .showAllPhotos:
-            destination.fetchResult = allPhotos
-            destination.headerTitleBtnString = cell.allPhotoTitle.text!
-        case .showCollection:
-            
-            // get the asset collection for the selected row
-            let indexPath = tableView.indexPath(for: cell)!
-            let collection: PHCollection
-            switch Section(rawValue: indexPath.section)! {
-            case .smartAlbums:
-                collection = smartAlbums.object(at: indexPath.row)
-            case .userCollections:
-                collection = userCollections.object(at: indexPath.row)
-            default: return // not reached; all photos section already handled by other segue
-            }
-            
-            // configure the view controller with the asset collection
-            guard let assetCollection = collection as? PHAssetCollection
-                else { fatalError("expected asset collection") }
-            destination.fetchResult = PHAsset.fetchAssets(in: assetCollection, options: nil)
-            destination.assetCollection = assetCollection
-            destination.headerTitleBtnString = cell.collectionTitle.text!
-            destination.isComingFromSelectAlbum = true
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        guard let destination = segue.destination as? AddPhotoPostVC
+//            else { fatalError("unexpected view controller for segue") }
+//        guard let cell = sender as? AlbumListCells else { fatalError("unexpected cell for segue") }
+//        
+//        switch SegueIdentifier(rawValue: segue.identifier!)! {
+//        case .showAllPhotos:
+//            destination.fetchResult = allPhotos
+//            destination.headerTitleBtnString = cell.allPhotoTitle.text!
+//        case .showCollection:
+//            
+//            // get the asset collection for the selected row
+//            let indexPath = tableView.indexPath(for: cell)!
+//            let collection: PHCollection
+//            switch Section(rawValue: indexPath.section)! {
+//            case .smartAlbums:
+//                collection = smartAlbums.object(at: indexPath.row)
+//            case .userCollections:
+//                collection = userCollections.object(at: indexPath.row)
+//            default: return // not reached; all photos section already handled by other segue
+//            }
+//            
+//            // configure the view controller with the asset collection
+//            guard let assetCollection = collection as? PHAssetCollection
+//                else { fatalError("expected asset collection") }
+//            destination.fetchResult = PHAsset.fetchAssets(in: assetCollection, options: nil)
+//            destination.assetCollection = assetCollection
+//            destination.headerTitleBtnString = cell.collectionTitle.text!
+//            destination.isComingFromSelectAlbum = true
+//        }
+//    }
+    
+    
     
     
     // MARK: Table View

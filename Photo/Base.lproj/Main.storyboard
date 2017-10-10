@@ -20,22 +20,22 @@
         <!--Add Photo PostVC-->
         <scene sceneID="Pdq-iU-v7G">
             <objects>
-                <viewController storyboardIdentifier="addPhotoPostVC" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalPresentationStyle="overCurrentContext" id="WeF-po-XbQ" customClass="AddPhotoPostVC" customModule="AquariumNote" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addPhotoPostVC" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalPresentationStyle="overCurrentContext" id="WeF-po-XbQ" customClass="AddPhotoPostVC" customModule="Photo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q2h-cD-EAw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uga-Vh-vlE">
-                                <rect key="frame" x="0.0" y="20" width="375" height="16"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="NyV-30-qdU"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fSG-mf-DGF" userLabel="TransparentBG">
-                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                                 <subviews>
-                                    <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SY6-oB-Q5D" customClass="CustomTabBar" customModule="AquariumNote" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="554" width="375" height="49"/>
+                                    <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SY6-oB-Q5D" customClass="CustomTabBar" customModule="Photo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="510" width="375" height="49"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <items>
                                             <tabBarItem title="Libreria" id="iou-4p-PJK">
@@ -58,7 +58,7 @@
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JLE-kO-Hc6">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qGf-Zc-JpF" customClass="FAScrollView" customModule="AquariumNote" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qGf-Zc-JpF" customClass="FAScrollView" customModule="Photo" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
@@ -105,7 +105,7 @@
                                         </connections>
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WBv-qj-W1t">
-                                        <rect key="frame" x="0.0" y="375" width="375" height="179"/>
+                                        <rect key="frame" x="0.0" y="375" width="375" height="135"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="Qxw-KR-FTd">
                                             <size key="itemSize" width="0.0" height="0.0"/>
@@ -114,7 +114,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoLibraryCell" id="EaC-eB-FLZ" customClass="PhotoLibraryCell" customModule="AquariumNote" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoLibraryCell" id="EaC-eB-FLZ" customClass="PhotoLibraryCell" customModule="Photo" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -124,7 +124,7 @@
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="uor-Am-AqD">
                                                             <rect key="frame" x="0.0" y="0.0" width="100" height="116"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="0:04" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2w7-5R-NQT" customClass="OutlinedLabel" customModule="AquariumNote" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="0:04" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2w7-5R-NQT" customClass="OutlinedLabel" customModule="Photo" customModuleProvider="target">
                                                             <rect key="frame" x="73" y="81" width="25" height="17"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="12"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -283,14 +283,14 @@
         <!--Select Album From LibraryTC-->
         <scene sceneID="0W5-kO-3J9">
             <objects>
-                <tableViewController id="h16-vS-dBR" customClass="SelectAlbumFromLibraryTC" customModule="AquariumNote" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="h16-vS-dBR" customClass="SelectAlbumFromLibraryTC" customModule="Photo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="30" sectionFooterHeight="30" id="flY-e2-l46">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="hRD-pQ-OKP"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="allPhotos" rowHeight="90" id="jus-dc-7Qs" customClass="AlbumListCells" customModule="AquariumNote" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="allPhotos" rowHeight="90" id="jus-dc-7Qs" customClass="AlbumListCells" customModule="Photo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="30" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jus-dc-7Qs" id="z05-qK-zFK">
@@ -346,10 +346,10 @@
                                     <outlet property="allPhotoCount" destination="Vt1-vF-yLe" id="ULj-DD-zZZ"/>
                                     <outlet property="allPhotoImage" destination="pb4-Vg-9fG" id="hra-dI-44X"/>
                                     <outlet property="allPhotoTitle" destination="gni-WD-iX0" id="GSW-G6-BD0"/>
-                                    <segue destination="WeF-po-XbQ" kind="show" identifier="showAllPhotos" id="XGd-a0-jEX"/>
+                                    <segue destination="xzJ-4h-HZE" kind="unwind" unwindAction="passAllPhotoWithSegue:" id="LNZ-rJ-tId"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="collection" rowHeight="90" id="i5s-rZ-Lk5" customClass="AlbumListCells" customModule="AquariumNote" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="collection" rowHeight="90" id="i5s-rZ-Lk5" customClass="AlbumListCells" customModule="Photo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="120" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i5s-rZ-Lk5" id="fEf-Ph-jTX">
@@ -405,7 +405,7 @@
                                     <outlet property="collectionCount" destination="gjw-YX-YaB" id="GxO-0c-WHn"/>
                                     <outlet property="collectionImage" destination="c2y-oj-sjm" id="4dv-11-owo"/>
                                     <outlet property="collectionTitle" destination="fLS-43-QtR" id="yET-sn-acC"/>
-                                    <segue destination="WeF-po-XbQ" kind="show" identifier="showCollection" id="LTh-Dq-Tkq"/>
+                                    <segue destination="xzJ-4h-HZE" kind="unwind" unwindAction="passCollectionWithSegue:" id="BYZ-jQ-DHz"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -438,13 +438,13 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3DT-be-Nnq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="xzJ-4h-HZE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="6726" y="963"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5fX-m4-RS9">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xGJ-yd-w89" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3jb-Ib-6Cp" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eTE-m4-nT0">
@@ -457,6 +457,7 @@
                         <segue destination="h16-vS-dBR" kind="relationship" relationship="rootViewController" id="GI6-8I-7gT"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xGJ-yd-w89" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5783" y="963"/>
         </scene>
@@ -465,7 +466,4 @@
         <image name="fishBookEnlarge" width="52" height="52"/>
         <image name="playButtonIcon" width="64" height="70"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="XGd-a0-jEX"/>
-    </inferredMetricsTieBreakers>
 </document>

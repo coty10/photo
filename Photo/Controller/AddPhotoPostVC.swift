@@ -181,6 +181,8 @@ class AddPhotoPostVC: UIViewController, UICollectionViewDelegate, UICollectionVi
             imageViewToDrag.center = location
         }
     }
+    // MARK: handle orientation
+    
     // Handle notification
     @objc func onDidBecomeActive() {
         setOrientationPortarait()
@@ -217,7 +219,7 @@ class AddPhotoPostVC: UIViewController, UICollectionViewDelegate, UICollectionVi
             playBtn.isHidden = true
         }
     }
-    //MARK ColletionView
+    // MARK: Colletion View
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return fetchResult.count
@@ -298,6 +300,7 @@ class AddPhotoPostVC: UIViewController, UICollectionViewDelegate, UICollectionVi
             viewWithTag.removeFromSuperview()
         }
     }
+    // MARK: Actions
     @IBAction func playBtnPressed(_ sender: Any) {
         player.play()
         playBtn.isHidden = true
@@ -321,6 +324,10 @@ class AddPhotoPostVC: UIViewController, UICollectionViewDelegate, UICollectionVi
             dismiss(animated: true, completion: nil)
         }
     }
+    @IBAction func forwardBtnPressed(_ sender: Any) {
+        
+    }
+    // MARK: Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if  segue.identifier == "selectAlbums" {
             if let destination = segue.destination as? UINavigationController {
@@ -330,7 +337,42 @@ class AddPhotoPostVC: UIViewController, UICollectionViewDelegate, UICollectionVi
             }
         }
     }
-    @IBAction func forwardBtnPressed(_ sender: Any) {
-        
+    @IBAction func passAllPhoto(segue: UIStoryboardSegue) {
+        print("Segue")
+        if segue.source is SelectAlbumFromLibraryTC {
+            print("Sorce")
+            if let senderVC = segue.source as? SelectAlbumFromLibraryTC {
+                if let selectedIndexPath = senderVC.tableView.indexPathForSelectedRow {
+                    let cell = senderVC.tableView.cellForRow(at: selectedIndexPath) as! AlbumListCells
+                    fetchResult = senderVC.allPhotos
+                    headerTitleBtnString = cell.allPhotoTitle.text!
+                    collectionView.reloadData()
+                }
+            }
+        }
+    }
+    @IBAction func passCollection(segue: UIStoryboardSegue) {
+        if segue.source is SelectAlbumFromLibraryTC {
+            if let senderVC = segue.source as? SelectAlbumFromLibraryTC {
+                if let selectedIndexPath = senderVC.tableView.indexPathForSelectedRow {
+                    let cell = senderVC.tableView.cellForRow(at: selectedIndexPath) as! AlbumListCells
+                    let indexPath = senderVC.tableView.indexPath(for: cell)!
+                    let collection: PHCollection
+                    switch SelectAlbumFromLibraryTC.Section(rawValue: indexPath.section)! {
+                    case .smartAlbums:
+                        collection = senderVC.smartAlbums.object(at: indexPath.row)
+                    case .userCollections:
+                        collection = senderVC.userCollections.object(at: indexPath.row)
+                    default: return
+                    }
+                    guard let passedAssetCollection = collection as? PHAssetCollection
+                        else { fatalError("expected asset collection") }
+                    fetchResult = PHAsset.fetchAssets(in: passedAssetCollection, options: nil)
+                    assetCollection = passedAssetCollection
+                    headerTitleBtnString = cell.collectionTitle.text!
+                    collectionView.reloadData()
+                }
+            }
+        }
     }
 }
