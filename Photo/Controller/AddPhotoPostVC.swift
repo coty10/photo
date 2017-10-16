@@ -22,13 +22,15 @@ class AddPhotoPostVC: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var scrollContainerView: UIView!
     @IBOutlet weak var scrollViewImage: FAScrollView!
     
-    
+    //MARK: Properties
     var imageToPass: UIImage!
     var player: AVPlayer!
     var playerLayer: AVPlayerLayer!
     var selectedCellView: UIView!
     var headerTitleBtnString = "Tutte le foto"
     var isComingFromSelectAlbum = false
+    var isVideo = false
+    var videoURLToPAss: URL!
     
     fileprivate let imageManager = PHCachingImageManager()
     var fetchResult: PHFetchResult<PHAsset>!
@@ -51,7 +53,6 @@ class AddPhotoPostVC: UIViewController, UICollectionViewDelegate, UICollectionVi
         selectedCellView.alpha = 0.6
         selectedCellView.tag = 300
         
-        forwardBtn.isEnabled = false
         playBtn.isHidden = true
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -64,20 +65,6 @@ class AddPhotoPostVC: UIViewController, UICollectionViewDelegate, UICollectionVi
             allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
             fetchResult = PHAsset.fetchAssets(with: allPhotosOptions)
         }
-        configureImageCropper(assets: fetchResult)
-        let firstAsset = fetchResult[0]
-        if firstAsset.mediaType == .video {
-            firstAsset.getURL(onSuccess: { (videoUrl) in
-                DispatchQueue.main.async {
-                    self.createVideoPlayer(url: videoUrl!)
-                    self.containerVideoView.isHidden = false
-                }
-            })
-            playBtn.isHidden = false
-        } else if firstAsset.mediaType == .image {
-            playBtn.isHidden = true
-            self.containerVideoView.isHidden = true
-        }
         let tap = UITapGestureRecognizer(target: self, action: #selector(AddPhotoPostVC.tapToZoom))
         tap.numberOfTapsRequired = 2
         scrollViewImage.addGestureRecognizer(tap)
@@ -85,27 +72,58 @@ class AddPhotoPostVC: UIViewController, UICollectionViewDelegate, UICollectionVi
         let tapVideo = UITapGestureRecognizer(target: self, action: #selector(tapToPause))
         tapVideo.numberOfTapsRequired = 1
         containerVideoView.addGestureRecognizer(tapVideo)
+        
+        createHeaderButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        createHeaderButton()
+        // here can configure also after segue
+        configureImageCropper(assets: fetchResult)
+        let firstAsset = fetchResult[0]
+        if firstAsset.mediaType == .video {
+            isVideo = true
+            firstAsset.getURL(onSuccess: { (videoUrl) in
+                DispatchQueue.main.async {
+                    self.createVideoPlayer(url: videoUrl!)
+                    self.containerVideoView.isHidden = false
+                    self.videoURLToPAss = videoUrl
+                }
+            })
+            playBtn.isHidden = false
+        } else if firstAsset.mediaType == .image {
+            isVideo = false
+            playBtn.isHidden = true
+            self.containerVideoView.isHidden = true
+        }
+    }
+    // MARK: Public Functions
+    func createHeaderButton() {
         headerTitleBtn.setTitle(headerTitleBtnString, for: .normal)
         headerTitleBtn.titleLabel?.minimumScaleFactor = 0.5
         headerTitleBtn.titleLabel?.numberOfLines = 2
+        headerTitleBtn.semanticContentAttribute = .forceRightToLeft
+        headerTitleBtn.contentMode = .scaleAspectFit
+        headerTitleBtn.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 0)
+        headerTitleBtn.setImage(UIImage(named:"arrowDown"), for: .normal)
+        headerTitleBtn.imageEdgeInsets = UIEdgeInsets(top: 8, left: 15, bottom: 8, right: 8)
+        headerTitleBtn.imageView?.contentMode = .scaleAspectFit
+        headerTitleBtn.imageView?.tintColor = UIColor.white
+        headerTitleBtn.tintColor = UIColor.white
     }
-    private func configureImageCropper(assets:PHFetchResult<PHAsset>){
-        
+    private func configureImageCropper(assets:PHFetchResult<PHAsset>) {
         if fetchResult.count != 0{
             fetchResult = assets
             collectionView.reloadData()
             selectDefaultImage()
         }
     }
-    private func selectDefaultImage(){
+    private func selectDefaultImage() {
         collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: .top)
         selectImageFromAssetAtIndex(index: 0)
     }
-    private func captureVisibleRect() -> UIImage{
+    private func captureVisibleRect() -> UIImage {
         var croprect = CGRect.zero
         let xOffset = (scrollViewImage.imageToDisplay?.size.width)! / scrollViewImage.contentSize.width;
         let yOffset = (scrollViewImage.imageToDisplay?.size.height)! / scrollViewImage.contentSize.height;
@@ -118,11 +136,9 @@ class AddPhotoPostVC: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         croprect.size.width = scrollViewImage.imageToDisplay!.size.width * normalizedWidth
         croprect.size.height = scrollViewImage.imageToDisplay!.size.height * normalizedHeight
-        
         let toCropImage = scrollViewImage.imageView.image?.fixImageOrientation()
         let cr: CGImage? = toCropImage?.cgImage?.cropping(to: croprect)
         let cropped = UIImage(cgImage: cr!)
-        
         return cropped
     }
     private func isSquareImage() -> Bool{
@@ -130,9 +146,8 @@ class AddPhotoPostVC: UIViewController, UICollectionViewDelegate, UICollectionVi
         if image?.size.width == image?.size.height { return true }
         else { return false }
     }
-    // MARK: Public Functions
     
-    func selectImageFromAssetAtIndex(index: Int){
+    func selectImageFromAssetAtIndex(index: Int) {
         let asset = fetchResult.object(at: index)
         let size = scrollViewImage.frame.size.width
         
@@ -142,7 +157,7 @@ class AddPhotoPostVC: UIViewController, UICollectionViewDelegate, UICollectionVi
             }
         })
     }
-    func displayImageInScrollView(image:UIImage){
+    func displayImageInScrollView(image:UIImage) {
         self.scrollViewImage.imageToDisplay = image
         if isSquareImage() { enlargeBtn.isHidden = true }
         else { enlargeBtn.isHidden = false }
@@ -181,6 +196,8 @@ class AddPhotoPostVC: UIViewController, UICollectionViewDelegate, UICollectionVi
             imageViewToDrag.center = location
         }
     }
+    // MARK: Handle phone orientation
+    
     // Handle notification
     @objc func onDidBecomeActive() {
         setOrientationPortarait()
@@ -197,6 +214,8 @@ class AddPhotoPostVC: UIViewController, UICollectionViewDelegate, UICollectionVi
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.portrait
     }
+    
+    //MARK: Custom Func
     func createVideoPlayer(url: URL) {
         self.containerVideoView.layer.sublayers?.forEach({$0.removeFromSuperlayer()})
         self.player = AVPlayer(url: url)
@@ -217,7 +236,7 @@ class AddPhotoPostVC: UIViewController, UICollectionViewDelegate, UICollectionVi
             playBtn.isHidden = true
         }
     }
-    //MARK ColletionView
+    //MARK: Colletion View
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return fetchResult.count
@@ -277,14 +296,17 @@ class AddPhotoPostVC: UIViewController, UICollectionViewDelegate, UICollectionVi
         cell?.addSubview(selectedCellView)
         let asset = fetchResult[indexPath.row]
         if asset.mediaType == .video {
+            isVideo = true
             asset.getURL(onSuccess: { (videoUrl) in
                 DispatchQueue.main.async {
                     self.createVideoPlayer(url: videoUrl!)
                     self.containerVideoView.isHidden = false
+                    self.videoURLToPAss = videoUrl
                 }
             })
             playBtn.isHidden = false
         } else if asset.mediaType == .image {
+            isVideo = false
             playBtn.isHidden = true
             self.containerVideoView.isHidden = true
             if player != nil {
@@ -298,6 +320,8 @@ class AddPhotoPostVC: UIViewController, UICollectionViewDelegate, UICollectionVi
             viewWithTag.removeFromSuperview()
         }
     }
+    // MARK: Button Action
+    
     @IBAction func playBtnPressed(_ sender: Any) {
         player.play()
         playBtn.isHidden = true
@@ -314,13 +338,24 @@ class AddPhotoPostVC: UIViewController, UICollectionViewDelegate, UICollectionVi
             }
         }
     }
+    
     @IBAction func undoBtnPressed(_ sender: Any) {
-        if isComingFromSelectAlbum {
-            presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
-        } else {
-            dismiss(animated: true, completion: nil)
-        }
+        dismiss(animated: true, completion: nil)
     }
+    @IBAction func forwardBtnPressed(_ sender: Any) {
+        if !isVideo {
+            croppedImage = captureVisibleRect()
+        }
+        performSegue(withIdentifier: "ApplyFilter", sender: nil)
+        
+    }
+    @IBAction func headerBtnPressed(_ sender: UIButton) {
+        UIView.transition(with: sender, duration: 0.5, options: .transitionCrossDissolve, animations: {
+            sender.setImage(UIImage(named: "arrowUp"), for: .normal)
+        }, completion: nil)
+    }
+    
+    // MARK: Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if  segue.identifier == "selectAlbums" {
             if let destination = segue.destination as? UINavigationController {
@@ -328,9 +363,54 @@ class AddPhotoPostVC: UIViewController, UICollectionViewDelegate, UICollectionVi
                     targetController.headTitle = headerTitleBtnString
                 }
             }
+        } else if segue.identifier == "ApplyFilter" {
+            if let destination = segue.destination as? ApplyFilterVC {
+                if isVideo {
+                    destination.isVideo = true
+                    destination.videoUrlPassed = videoURLToPAss
+                } else {
+                    destination.isVideo = false
+                    destination.croppedImage = croppedImage
+                }
+            }
         }
     }
-    @IBAction func forwardBtnPressed(_ sender: Any) {
-        
+    //MARK: Unwind Segue
+    @IBAction func passAllPhoto(segue: UIStoryboardSegue) {
+        if segue.source is SelectAlbumFromLibraryTC {
+            if let senderVC = segue.source as? SelectAlbumFromLibraryTC {
+                if let selectedIndexPath = senderVC.tableView.indexPathForSelectedRow {
+                    let cell = senderVC.tableView.cellForRow(at: selectedIndexPath) as! AlbumListCells
+                    fetchResult = senderVC.allPhotos
+                    headerTitleBtnString = cell.allPhotoTitle.text!
+                    collectionView.reloadData()
+                }
+            }
+        }
+    }
+    @IBAction func passCollection(segue: UIStoryboardSegue) {
+        if segue.source is SelectAlbumFromLibraryTC {
+            if let senderVC = segue.source as? SelectAlbumFromLibraryTC {
+                if let selectedIndexPath = senderVC.tableView.indexPathForSelectedRow {
+                    let cell = senderVC.tableView.cellForRow(at: selectedIndexPath) as! AlbumListCells
+                    let indexPath = senderVC.tableView.indexPath(for: cell)!
+                    let collection: PHCollection
+                    switch SelectAlbumFromLibraryTC.Section(rawValue: indexPath.section)! {
+                    case .smartAlbums:
+                        collection = senderVC.smartAlbums[indexPath.row]
+                    case .userCollections:
+                        collection = senderVC.userCollections.object(at: indexPath.row)
+                    default: return
+                    }
+                    guard let passedAssetCollection = collection as? PHAssetCollection
+                        else { fatalError("expected asset collection") }
+                    fetchResult = PHAsset.fetchAssets(in: passedAssetCollection, options: nil)
+                    assetCollection = passedAssetCollection
+                    headerTitleBtnString = cell.collectionTitle.text!
+                    collectionView.reloadData()
+                }
+            }
+        }
     }
 }
+
