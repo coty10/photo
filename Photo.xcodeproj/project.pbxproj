@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E16F06581F94B7920093C7FF /* ApplyFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F06571F94B7920093C7FF /* ApplyFilterVC.swift */; };
+		E16F065B1F94B7D50093C7FF /* PhotoFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F065A1F94B7D50093C7FF /* PhotoFilters.swift */; };
+		E16F065D1F94B7E80093C7FF /* FilteredImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F065C1F94B7E80093C7FF /* FilteredImages.swift */; };
+		E16F065F1F94B80E0093C7FF /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F065E1F94B80E0093C7FF /* FilterCell.swift */; };
 		E1CF81211F8C2C81002FB9AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CF81201F8C2C81002FB9AE /* AppDelegate.swift */; };
 		E1CF81231F8C2C81002FB9AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CF81221F8C2C81002FB9AE /* ViewController.swift */; };
 		E1CF81261F8C2C81002FB9AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1CF81241F8C2C81002FB9AE /* Main.storyboard */; };
@@ -46,6 +50,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E16F06571F94B7920093C7FF /* ApplyFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyFilterVC.swift; sourceTree = "<group>"; };
+		E16F065A1F94B7D50093C7FF /* PhotoFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFilters.swift; sourceTree = "<group>"; };
+		E16F065C1F94B7E80093C7FF /* FilteredImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredImages.swift; sourceTree = "<group>"; };
+		E16F065E1F94B80E0093C7FF /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		E1CF811D1F8C2C81002FB9AE /* Photo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1CF81201F8C2C81002FB9AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1CF81221F8C2C81002FB9AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +106,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E16F06591F94B7C60093C7FF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E16F065A1F94B7D50093C7FF /* PhotoFilters.swift */,
+				E16F065C1F94B7E80093C7FF /* FilteredImages.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E1CF81141F8C2C81002FB9AE = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +204,7 @@
 			children = (
 				E1CF815D1F8C2D9F002FB9AE /* PhotoLibraryCell.swift */,
 				E1CF815F1F8C2DAF002FB9AE /* AlbumListCells.swift */,
+				E16F065E1F94B80E0093C7FF /* FilterCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -197,6 +215,7 @@
 				E1CF81621F8C2DF7002FB9AE /* AddPhotoPostVC.swift */,
 				E1CF81641F8C2E0E002FB9AE /* SelectAlbumFromLibraryTC.swift */,
 				E1CF816B1F8C323B002FB9AE /* MainVC.swift */,
+				E16F06571F94B7920093C7FF /* ApplyFilterVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -204,6 +223,7 @@
 		E1CF81661F8C3034002FB9AE /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				E16F06591F94B7C60093C7FF /* Model */,
 				E1CF81671F8C303C002FB9AE /* PHAssetExtension.swift */,
 			);
 			path = Helper;
@@ -346,17 +366,21 @@
 			files = (
 				E1CF816A1F8C3052002FB9AE /* RequestPermission.swift in Sources */,
 				E1CF815E1F8C2D9F002FB9AE /* PhotoLibraryCell.swift in Sources */,
+				E16F065F1F94B80E0093C7FF /* FilterCell.swift in Sources */,
 				E1CF81591F8C2D24002FB9AE /* FAScrollView.swift in Sources */,
 				E1CF81651F8C2E0E002FB9AE /* SelectAlbumFromLibraryTC.swift in Sources */,
+				E16F065D1F94B7E80093C7FF /* FilteredImages.swift in Sources */,
 				E1CF81571F8C2D03002FB9AE /* FAImageLoader.swift in Sources */,
 				E1CF81291F8C2C81002FB9AE /* Photo.xcdatamodeld in Sources */,
 				E1CF81631F8C2DF7002FB9AE /* AddPhotoPostVC.swift in Sources */,
 				E1CF81551F8C2CF1002FB9AE /* UIImage+Additions.swift in Sources */,
 				E1CF81231F8C2C81002FB9AE /* ViewController.swift in Sources */,
 				E1CF81211F8C2C81002FB9AE /* AppDelegate.swift in Sources */,
+				E16F065B1F94B7D50093C7FF /* PhotoFilters.swift in Sources */,
 				E1CF81681F8C303C002FB9AE /* PHAssetExtension.swift in Sources */,
 				E1CF81601F8C2DAF002FB9AE /* AlbumListCells.swift in Sources */,
 				E1CF816C1F8C323B002FB9AE /* MainVC.swift in Sources */,
+				E16F06581F94B7920093C7FF /* ApplyFilterVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
